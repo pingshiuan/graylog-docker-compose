@@ -36,6 +36,7 @@ services:
       - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
       - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
       - GRAYLOG_ROOT_TIMEZONE=Asia/Taipei
+      - GRAYLOG_MESSAGE_JOURNAL_ENABLED=true
       - GRAYLOG_MESSAGE_JOURNAL_MAX_AGE=183d
     entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
     links:

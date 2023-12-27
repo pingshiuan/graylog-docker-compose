@@ -25,7 +25,7 @@ services:
     mem_limit: 1g
 # Graylog: https://hub.docker.com/r/graylog/graylog/
   graylog:
-    image: graylog/graylog:5.1
+    image: graylog/graylog:5.2
     volumes:
       - graylog_journal:/usr/share/graylog/data/journal
     restart: always
@@ -38,6 +38,7 @@ services:
       - GRAYLOG_ROOT_TIMEZONE=Asia/Taipei
       - GRAYLOG_MESSAGE_JOURNAL_ENABLED=true
       - GRAYLOG_MESSAGE_JOURNAL_MAX_AGE=183d
+      - graylog_message_journal_max_size: 40gb
     entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
     links:
       - mongodb:mongo
